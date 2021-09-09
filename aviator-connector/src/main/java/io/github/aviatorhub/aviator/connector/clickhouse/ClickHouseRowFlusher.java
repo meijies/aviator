@@ -25,6 +25,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.flink.table.catalog.Column;
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.data.TimestampData;
+import org.apache.flink.table.types.logical.LogicalType;
 import org.apache.flink.table.types.logical.LogicalTypeRoot;
 import org.apache.flink.table.types.logical.TimestampType;
 import org.elasticsearch.common.util.set.Sets;
@@ -47,6 +48,7 @@ public class ClickHouseRowFlusher extends AbstractAviatorFlusher<RowData> {
   private static final Map<LogicalTypeRoot, Set<String>> typeMatchMap = new HashMap<>();
 
   static {
+
     typeMatchMap.put(LogicalTypeRoot.CHAR, Sets.newHashSet("String", "Nullable(String)"));
     typeMatchMap.put(LogicalTypeRoot.BOOLEAN, Sets.newHashSet("UInt8"));
     typeMatchMap.put(LogicalTypeRoot.TINYINT, numberTypes);
